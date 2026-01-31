@@ -1,16 +1,19 @@
 
 name:  check HTML File
-on: [push]
+on: 
+  push:
 jobs:
-	check-html:
-		runs-on: ubuntu-latest
-	steps:
-	- uses: actions/checkout@v3
-	-name: Check if index.html exists
-	run: |
-	   if [ -f index.html ]; then
+  check-html:
+	runs-on: ubuntu-latest
+	steps: 
+	 - name: Checkout code
+	   uses: actions/checkout@v3
+
+	 - name: Check if index.html exists
+	   run: |
+	     if [ -f index.html ]; then
 	        echo "index.html exists"
-	   else
+	     else
 		echo "index.html is missing"
 		exit 1
-	   fi
+	     fi
